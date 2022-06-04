@@ -1,5 +1,6 @@
 package pe.visorweb.categoria;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -46,13 +47,13 @@ public class CategoriaInsertarTest {
 		
 		//9. ubicar el menï¿½ "mod. de almacï¿½n" y hacer clic
 		Thread.sleep(1000);
-		WebElement menuModuloAlmacen = driver.findElement(By.xpath("//span[contains(text(), \"Mod. de AlmacÃ©n\")]"));
+		WebElement menuModuloAlmacen = driver.findElement(By.xpath("//span[contains(text(), \"Mod. de Almacén\")]"));
 		menuModuloAlmacen.click();
 		
 		//10. ubicar el menï¿½ "mnt. categorï¿½a" y hacer clic
 		Thread.sleep(1000);
 		//WebElement menuMntCategoria = driver.findElement(By.xpath("//a[text()=\"Mnt. de CategorÃ­a\"]"));
-		WebElement menuMntCategoria = driver.findElement(By.linkText("Mnt. de CategorÃ­a"));
+		WebElement menuMntCategoria = driver.findElement(By.linkText("Mnt. de Categoría"));
 		menuMntCategoria.click();
 		
 		//11. ubicar el botï¿½n nuevo y hacer clic
@@ -69,11 +70,15 @@ public class CategoriaInsertarTest {
 
 		//14. ubicar el mensaje de respuesta obtenido y guardarlo
 		Thread.sleep(2000);
-		String mensajeEsperado = "Se guardÃ³ de manera correcta la CategorÃ­a";
-		String mensajeObtenido = driver.findElement(By.id("message")).getText();
+		String mensajeEsperado = "Se guardó de manera correcta la Categoría";
+		String mensajeObtenido = driver.findElement(By.id("messages")).getText();
 		
 		//15. punto de verificaciï¿½n: mensajeObtenidd == "Se guardï¿½ de manera correcta la Categorï¿½a"
+		Assertions.assertEquals(mensajeEsperado, mensajeObtenido);
 		
+		//16. cerramos el navegador
+		Thread.sleep(2000);
+		driver.close();
 		
 		
 	}
