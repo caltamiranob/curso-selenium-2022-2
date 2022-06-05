@@ -68,6 +68,64 @@ public class CategoriaListarTest {
 		
 	}
 	
+	
+	@Test
+	void testFiltrarSinDatos() throws InterruptedException {
+		
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://localhost:8080/VisorWeb/index.xhtml");
+		driver.manage().window().maximize();
+		
+		WebElement txtUsuario = driver.findElement(By.id("txtUsuario"));
+		txtUsuario.clear();
+		txtUsuario.sendKeys("admin");
+		
+		WebElement txtClave = driver.findElement(By.id("txtClave"));
+		txtClave.clear();
+		txtClave.sendKeys("clave");
+		
+		WebElement btnIniciarSesion = driver.findElement(By.id("btnIniciarSesion"));
+		btnIniciarSesion.click();
+		
+		Thread.sleep(1000);
+		WebElement menuHamburguesa = driver.findElement(By.xpath("//div[@class=\"menu\"]/div[1]"));
+		menuHamburguesa.click();
+		
+		Thread.sleep(1000);
+		WebElement menuModuloAlmacen = driver.findElement(By.xpath("//span[contains(text(), \"Mod. de Almacén\")]"));
+		menuModuloAlmacen.click();
+		
+		Thread.sleep(1000);
+		WebElement menuMntCategoria = driver.findElement(By.linkText("Mnt. de Categoría"));
+		menuMntCategoria.click();
+		
+		String filtro = "";
+		WebElement txtFiltro = driver.findElement(By.id("txtFiltro"));
+		txtFiltro.sendKeys(filtro);
+		
+		WebElement btnFiltrar = driver.findElement(By.id("btnFiltrar"));
+		btnFiltrar.click();
+		
+		Thread.sleep(1000);
+		List<WebElement> filas = driver.findElements(By.xpath("//tbody[@id=\"tablaCategorias_data\"]/tr"));
+		System.out.println("Cantidad de filas encontradas: " + filas.size());
+		assertTrue(filas.size() >= 1);
+		
+		for(WebElement fila : filas) {
+			List<WebElement> celdas = fila.findElements(By.tagName("td"));
+			System.out.println("celda: " + celdas.get(1).getText());
+			if (celdas.get(1).getText().equals("TALLER")) {
+				celdas.get(0).click();
+				break;
+			}
+		}
+		
+		Thread.sleep(2000);
+		driver.quit();
+		
+	}
+	
 }
 
 
