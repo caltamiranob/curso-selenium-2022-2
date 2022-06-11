@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import pe.visorweb.paginas.categoria.PaginaMantenimientoCategoria;
+
 public class MenuPrincipal {
 
 	@FindBy(xpath = "//div[@class=\"menu\"]/div[1]")
@@ -23,7 +25,7 @@ public class MenuPrincipal {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public void cargarPaginaMantenimientoCategoria() throws InterruptedException {
+	public PaginaMantenimientoCategoria cargarPaginaMantenimientoCategoria() throws InterruptedException {
 		
 		Thread.sleep(1000);
 		menuHamburguesa.click();
@@ -33,6 +35,8 @@ public class MenuPrincipal {
 		
 		Thread.sleep(1000);
 		menuMantenimientoCategoria.click();
+		
+		return new PaginaMantenimientoCategoria(driver);
 		
 	}
 	
