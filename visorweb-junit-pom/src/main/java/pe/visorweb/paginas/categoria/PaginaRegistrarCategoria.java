@@ -24,6 +24,8 @@ public class PaginaRegistrarCategoria {
 	private WebDriver driver;
 	
 	private MenuPrincipal menuPrincipal;
+
+	private String mensajeObtenido;
 	
 	public PaginaRegistrarCategoria(WebDriver driver) {
 		this.driver = driver;
@@ -31,9 +33,24 @@ public class PaginaRegistrarCategoria {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public void cargar() {
+	public void cargar() throws InterruptedException {
 		menuPrincipal
-			.cargarPaginaMantenimientoCategoria();
+			.cargarPaginaMantenimientoCategoria()
+				.cargarPaginaRegistrarCategoria();
+	}
+	
+	public void guardar(String nombreCategoria) throws InterruptedException {
+		txtNombre.clear();
+		txtNombre.sendKeys(nombreCategoria);
+		btnGuardar.click();
+		
+		Thread.sleep(2000);
+		this.mensajeObtenido = lblMensaje.getText();
+		
+	}
+	
+	public String getMensajeObtenido() {
+		return this.mensajeObtenido;
 	}
 	
 }
