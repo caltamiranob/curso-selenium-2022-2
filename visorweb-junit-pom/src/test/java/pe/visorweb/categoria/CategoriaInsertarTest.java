@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 
 import pe.visorweb.driver.VisorWebDriver;
 import pe.visorweb.driver.VisorWebDriver.NavegadorWeb;
+import pe.visorweb.menu.MenuPrincipal;
 import pe.visorweb.paginas.categoria.PaginaRegistrarCategoria;
 import pe.visorweb.paginas.login.LoginPagina;
 

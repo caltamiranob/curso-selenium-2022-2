@@ -1,0 +1,4 @@
+usuario,clave,nombre,mensajeEsperado
+admin,clave,MONITOR CSV,Se guardó de manera correcta la Categoría
+admin,clave,"",Nombre: Error de validación: se necesita un valor.
+admin,clave,TECLADO CSV,Se guardó de manera correcta la Categoría
