@@ -1,5 +1,6 @@
 package pe.visorweb.categoria;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,6 +25,11 @@ public class CategoriaInsertarTest {
 		driver = VisorWebDriver.obtenerInstancia(NavegadorWeb.CHROME);
 		paginaLogin = new LoginPagina(driver);
 		paginaRegistrarCategoria = new PaginaRegistrarCategoria(driver);
+	}
+
+	@AfterAll
+	public static void liberarRecursos() {
+		driver.close();
 	}
 	
 	@Test
@@ -59,23 +65,3 @@ public class CategoriaInsertarTest {
 	
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
