@@ -42,6 +42,7 @@ public class PaginaRegistrarCategoria {
 	public void guardar(String nombreCategoria) throws InterruptedException {
 		txtNombre.clear();
 		txtNombre.sendKeys(nombreCategoria);
+		
 		btnGuardar.click();
 		
 		Thread.sleep(2000);
