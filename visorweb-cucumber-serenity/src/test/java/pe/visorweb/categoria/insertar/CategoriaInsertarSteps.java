@@ -24,6 +24,7 @@ public class CategoriaInsertarSteps {
 	
 	@Before
 	public void configuracionInicial() {
+		driver.manage().window().maximize();
 		paginaLogin = new LoginPagina(driver);
 		paginaRegistrarCategoria = new PaginaRegistrarCategoria(driver);
 	}
